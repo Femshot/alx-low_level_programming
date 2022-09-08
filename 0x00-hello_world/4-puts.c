@@ -1,10 +1,10 @@
 #include <stdio.h>
 /**
- * Print_statement - Print "Programming is like building a multilingual puzzle"
+ * main - Print "Programming is like building a multilingual puzzle"
  *
  * Return: 0 after printing statement
  */
-int Print_statement(void)
+int main(void)
 {    puts("\"Programming is like building a multilingual puzzle");
 	return (0);
 }
