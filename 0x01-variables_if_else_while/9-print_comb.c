@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*
+/**
  * main - Entry point
  *
  * Return: 0 Always
@@ -19,7 +19,8 @@ int main(void)
 		putchar(',');
 		putchar(' ');
 	}
-	putchar('\n');
 	}
+	putchar('\n');
+
 	return (0);
 }
