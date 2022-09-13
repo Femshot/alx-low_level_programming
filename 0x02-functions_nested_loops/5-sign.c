@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * print_sign - Check prints the sign of the number
+ * print_sign - Prints the sign of the number
  * @n: An input number
  *
  * Return: 1 if number is positive, o if number is 0,
@@ -22,7 +22,7 @@ int print_sign(int n)
 		_putchar('0');
 	}
 	else
-	}
+	{
 		value = -1;
 		_putchar('-');
 	}
