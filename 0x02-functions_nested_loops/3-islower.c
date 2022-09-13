@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _is lower - prints alpahbet in lowercase
+ * _islower - prints alpahbet in lowercase
  * @c: input character
  *
  *Return: 1 if lowercase or 0 if uppercase
