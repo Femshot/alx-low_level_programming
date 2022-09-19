@@ -8,6 +8,9 @@
 
 void swap_int(int *a, int *b)
 {
-	*a = (unsigned long int) b;
-	*b = (unsigned long int) a;
+	int tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
