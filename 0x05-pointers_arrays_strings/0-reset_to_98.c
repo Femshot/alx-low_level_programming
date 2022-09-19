@@ -6,9 +6,9 @@
  * &n - address of variable held be pointer A
  */
 
-void reset_to_98(int *a)
+void reset_to_98(int *n)
 {
-	int *a = &n;
+	int *n = &n;
 
 	*a = 98;
 }
