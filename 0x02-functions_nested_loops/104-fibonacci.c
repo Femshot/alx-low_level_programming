@@ -14,7 +14,7 @@ int main(void)
 	fibonacci[1] = 1;
 	fibonacci[2] = 2;
 
-	printf("%lu, %lu, ", fibonacci[0], fibonacci[1]);
+	printf("%lu, %lu, ", fibonacci[1], fibonacci[2]);
 	for (n = 3; n <= 98; n++)
 	{
 		fibonacci[n] = fibonacci[n - 1] + fibonacci[n - 2];
