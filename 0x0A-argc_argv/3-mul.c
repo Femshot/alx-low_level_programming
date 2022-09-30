@@ -10,11 +10,14 @@
 
 int main(int argc, char *argv[])
 {
-	int i, mul;
+	int i, j, mul;
 
+	i = atoi(argv[1]);
+	j = atoi(argv[2]);
+	
 	if (argc == 3)
 	{
-		mul = atoi(argv[1]) * atoi(argv[2]);
+		mul = i * j;
 		printf("%d\n", mul);
 		return (0);
 	}
