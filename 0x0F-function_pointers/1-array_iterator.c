@@ -12,14 +12,14 @@
 
 void array_iterator(int *array, size_t size, void (*action)(int))
 {
-	int i = 0, elem;
+	unsigned int i = 0, j;
 
 	if (action == NULL || array == NULL)
 		return;
 
 	for (; i < size; i++)
 	{
-		array[i] = elem;
-		action(elem);
+		array[i] = j;
+		action(j);
 	}
 }
