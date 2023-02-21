@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /**
- * main - Prints Fibonacci numbers 
+ * main - Prints Fibonacci numbers
  *
  * Return: 0 on Success
  */
@@ -9,7 +9,7 @@
 int main(void)
 {
 	int i;
-	long int fibonacci[32] = {1, 2}, sum = 2;
+	long int fibonacci[32] = {0, 1, 2}, sum = 2;
 
 	for (i = 3; i <= 32; i++)
 	{
