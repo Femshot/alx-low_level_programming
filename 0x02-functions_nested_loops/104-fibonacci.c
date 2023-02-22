@@ -8,20 +8,20 @@
 
 int main(void)
 {
-	unsigned long int fibonacci[98] = {1, 2};
+	long double fibonacci[98] = {1, 2};
 	int n;
 
-	printf("%lu, %lu, ", fibonacci[0], fibonacci[1]);
+	printf("%.0Lf, %.0Lf, ", fibonacci[0], fibonacci[1]);
 	for (n = 2; n < 98; n++)
 	{
 		fibonacci[n] = fibonacci[n - 1] + fibonacci[n - 2];
 		if (n == 97)
 		{
-			printf("%lu\n", fibonacci[n]);
+			printf("%.0Lf\n", fibonacci[n]);
 		}
 		else
 		{
-			printf("%lu, ", fibonacci[n]);
+			printf("%.0Lf, ", fibonacci[n]);
 		}
 	}
 	return (0);
