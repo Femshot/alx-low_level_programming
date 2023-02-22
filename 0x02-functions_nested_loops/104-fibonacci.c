@@ -8,17 +8,14 @@
 
 int main(void)
 {
-	unsigned long int fibonacci[98];
+	unsigned long int fibonacci[98] = {1, 2};
 	int n;
 
-	fibonacci[0] = 1;
-	fibonacci[1] = 2;
-
-	printf("%lu, %lu, ", fibonacci[1], fibonacci[2]);
+	printf("%lu, %lu, ", fibonacci[0], fibonacci[1]);
 	for (n = 2; n < 98; n++)
 	{
 		fibonacci[n] = fibonacci[n - 1] + fibonacci[n - 2];
-		if (n == 98)
+		if (n == 97)
 		{
 			printf("%lu\n", fibonacci[n]);
 		}
