@@ -12,11 +12,11 @@
 
 void print_remaining_days(int month, int day, int year)
 {
-	int test1 = year % 100 != 0;
-	int test2 = year % 400 == 0;
-	int test3 = year % 4 == 0;
-	int test4 = year % 100 == 0;
-	int test5 = year != 0
+	int test1 = (year % 100 != 0);
+	int test2 = (year % 400 == 0);
+	int test3 = (year % 4 == 0);
+	int test4 = (year % 100 == 0);
+	int test5 = (year != 0);
 
 	if ((test1 || test2) && (test3 || test4) && test5)
 	{
