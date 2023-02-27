@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- * _puts - Prints inputed string to stdout
+ * puts2 - Prints inputed string to stdout
  * @str: String to to printed
  */
-void _puts(char *str)
+void puts2(char *str)
 {
 	while (*str != '\0')
 	{
