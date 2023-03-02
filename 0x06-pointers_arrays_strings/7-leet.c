@@ -9,20 +9,17 @@
 char *leet(char *str)
 {
 	char *ptr = str;
-	char alp[5][2] = {'a', 'A', 'e', 'E', 'o', 'O', 't', 'T', 'l', 'L'};
-	char leet[5] = {'4', '3', '0', '7', '1'};
-	int i, j;
+	char alp[10] = {'a', 'A', 'e', 'E', 'o', 'O', 't', 'T', 'l', 'L'};
+	char leet[10] = {'4', '4', '3', '3', '0', '0', '7', '7', '1', '1'};
+	int i = 0, j;
 
-	while (*str != '\0')
+	while (str[i] != '\0')
 	{
-		for (i = 0; i < 5; i++)
+		for (j = 0; j < 10; j++)
 		{
-			for (j = 0; j < 2; j++)
+			if (*str == alp[j])
 			{
-				if (*str == alp[i][j])
-				{
-					*str = leet[i];
-				}
+				*str = leet[j];
 			}
 		}
 		str++;
