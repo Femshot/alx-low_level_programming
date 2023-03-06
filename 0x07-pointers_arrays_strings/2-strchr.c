@@ -14,9 +14,10 @@ char *_strchr(char *s, char c)
 	char *ptr = NULL;
 
 	for (i = 0; *(s + i); i++)
-	{
 		if (*(s + i) == c)
-			return (ptr = (s + i));
-	}
+			return (s + i);
+
+	if (*(s + i) == c)
+		return (s + i);
 	return (ptr);
 }
