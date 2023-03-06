@@ -1,5 +1,5 @@
 #include "main.h"
-#include <stdio.h>
+#include <stddef.h>
 
 /**
  * _strstr - LOcate a substring in a string
@@ -10,21 +10,26 @@
  */
 char *_strstr(char *haystack, char *needle)
 {
-	char *startn = needle, *starth = haystack;
+	int i = 0, j = 0;
+	int len = 0;
+	char *ptr;
 
-	while (*haystack)
+	while (*(needle + len))
+		len++;
+
+	len -= 1;
+	while (*(haystack + i))
 	{
-		starth = haystack;
-		needle = startn;
-		while (*haystack == *needle)
-		{
-			haystack++;
-			needle++;
-		}
+		if (j != len && (*(haystack + i) == *(needle + j)))
+			j++;
 
-		if (*needle == '\0')
-			return (haystack);
-		haystack = starth + 1;
+		if (*(haystack + i) != *(needle + j) && j > 0 && j < len)
+			ptr = NULL;
+
+		else if (j == len && (*(haystack + i) == *(needle + j)))
+			return (haystack + (i - j));
+
+		i++;
 	}
-	return (NULL);
+	return (ptr);
 }
