@@ -5,7 +5,7 @@
  * @x: A random integar
  * @y: A random integar
  *
- * Return: -1 if y < 0 els x rasied to power y
+ * Return: -1 if y < 0, else x rasied to power y
  */
 int _pow_recursion(int x, int y)
 {
