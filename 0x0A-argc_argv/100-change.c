@@ -19,30 +19,19 @@ int main(int argc, char *argv[])
 			printf("0\n");
 			return (0);
 		}
-		while (num >= 25)
+		while (num)
 		{
+			if (num >= 25)
+				num -= 25;
+			else if (num >= 10)
+				num -= 10;
+			else if (num >= 5)
+				num -= 5;
+			else if (num >= 2)
+				num -= 2;
+			else if (num >= 1)
+				num -= 1;
 			coin++;
-			num -= 25;
-		}
-		while (num >= 10)
-		{
-			coin++;
-			num -= 10;
-		}
-		while (num >= 5)
-		{
-			coin++;
-			num -= 5;
-		}
-		while (num >= 2)
-		{
-			coin++;
-			num -= 2;
-		}
-		while (num >= 1)
-		{
-			coin++;
-			num -= 1;
 		}
 		printf("%d\n", coin);
 		return (0);
