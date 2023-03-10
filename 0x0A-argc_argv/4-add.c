@@ -3,7 +3,7 @@
 #include <ctype.h>
 
 /**
- * main - Prints all arguments passed into it
+ * main - Prints addtition of all integar arguments passed into it
  * @argc: Program argument counter
  * @argv: Program argument vector
  *
@@ -11,21 +11,25 @@
  */
 int main(int argc, char *argv[])
 {
-    int i, add = 0;
+    int i, j, add = 0;
+    int test;
 
     if (argc > 1)
     {
 	for (i = 1; i < argc; i++)
 	{
-		if (isdigit(*argv[i]))
+		j = 0;
+		while (argv[i][j])
 		{
-			add += atoi(argv[i]);
-		}
-		else
-		{
+		    test = isdigit(argv[i][j]);
+		    if (test == 0)
+		    {
 			printf("Error\n");
 			return (1);
+		    }
+		    j++;
 		}
+		add += atoi(argv[i]);
 	}
 	printf("%d\n", add);
     }
