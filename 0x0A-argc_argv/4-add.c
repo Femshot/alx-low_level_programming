@@ -1,6 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <ctype.h>
+#include "main.h"
 
 /**
  * main - Prints addtition of all integar arguments passed into it
@@ -9,33 +8,35 @@
  *
  * Return: 0 on success
  */
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
 	int i, j, add = 0;
-	int test;
+	int res;
 
 	if (argc > 1)
 	{
 		for (i = 1; i < argc; i++)
 		{
-			j = 0;
-			while (argv[i][j])
+			res = 0;
+			for (j = 0; *(argv[i] + j); j++)
 			{
-				test = isdigit(argv[i][j]);
-				if (test == 0)
+				if (*(argv[i] + j) >= '0' && *(argv[i] + j) <= '9')
+				{
+					res = (res * 10) + (*(argv[i] + j) - '0');
+				}
+				else
 				{
 					printf("Error\n");
 					return (1);
 				}
-				j++;
 			}
-			add += atoi(argv[i]);
+			add += res;
 		}
-	printf("%d\n", add);
+		printf("%d\n", add);
 	}
 	else
 	{
-	printf("%d\n", 0);
+		printf("%d\n", 0);
 	}
 	return (0);
 }
