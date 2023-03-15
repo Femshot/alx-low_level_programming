@@ -14,12 +14,9 @@ char **strtow(char *str)
 
 	if (str == NULL || *(str + 0) == '\0')
 		return (NULL);
-	while (*(str + l))
-	{
-		if (*(str + l - 1) == ' ' && *(str + l) != ' ')
-			wrd_cnt++;
-		l++;
-	}
+	wrd_cnt = count_num_words(str);
+	if (wrd_cnt == 0)
+		return (NULL);
 	ptr = (char **)malloc((wrd_cnt + 1) * sizeof(char *));
 	if (ptr == NULL)
 		return (NULL);
@@ -29,7 +26,7 @@ char **strtow(char *str)
 			len++;
 		if (*(str + (i - 1)) != ' ' && *(str + i) == ' ' && i != 0)
 		{
-			ptr[j] = (char *)malloc(len * sizeof(char));
+			ptr[j] = (char *)malloc((len + 1) * sizeof(char));
 			if (ptr[j] == NULL)
 			{
 				fail = 1;
@@ -37,6 +34,7 @@ char **strtow(char *str)
 			}
 			for (k = 0; len > 0; k++, len--)
 				ptr[j][k] = *(str + (i - len));
+			ptr[j][k] = '\0';
 			j++;
 		}
 		i++;
@@ -49,4 +47,21 @@ char **strtow(char *str)
 		free(ptr);
 	}
 	return (ptr);
+}
+/**
+ * count_num_words - Counts the number of words found in a string
+ * @s: Pointer to string
+ * Return:number of words found
+ */
+int count_num_words(char *s)
+{
+	int i = 0, l = 0;
+
+	while (*(s + l))
+	{
+		if (*(s + l - 1) == ' ' && *(s + l) != ' ')
+			i++;
+		l++;
+	}
+	return (i);
 }
