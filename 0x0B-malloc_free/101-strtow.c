@@ -9,41 +9,21 @@
 char **strtow(char *str)
 {
 	char **ptr;
-	int i = 0, j = 0, k;
-	int wrd_cnt, len = 0, fail = 0;
+	int wrd_cnt, fail = 0;
 
-	if (str == NULL || *(str + 0) == '\0')
+	if (str == NULL || *(str + 0) == '\0' || count_num_words(str) == 0)
 		return (NULL);
+
 	wrd_cnt = count_num_words(str);
-	if (wrd_cnt == 0)
-		return (NULL);
 	ptr = (char **)malloc((wrd_cnt + 1) * sizeof(char *));
 	if (ptr == NULL)
 		return (NULL);
-	while (*(str + i))
+
+	fail = array_of_strings(str, ptr);
+	if (fail != 0)
 	{
-		if (*(str + i) != ' ')
-			len++;
-		if (*(str + (i - 1)) != ' ' && *(str + i) == ' ' && i != 0)
-		{
-			ptr[j] = (char *)malloc((len + 1) * sizeof(char));
-			if (ptr[j] == NULL)
-			{
-				fail = 1;
-				break;
-			}
-			for (k = 0; len > 0; k++, len--)
-				ptr[j][k] = *(str + (i - len));
-			ptr[j][k] = '\0';
-			j++;
-		}
-		i++;
-	}
-	ptr[j] = NULL;
-	if (fail == 1)
-	{
-		for (; j == 0; j--)
-			free((int *)ptr[j]);
+		for (; fail == 0; fail--)
+			free((int *)ptr[fail]);
 		free(ptr);
 	}
 	return (ptr);
@@ -64,4 +44,39 @@ int count_num_words(char *s)
 		l++;
 	}
 	return (i);
+}
+/**
+ * array_of_strings - Creates copy of an array of strings in an allocated space
+ * @str: Pointer to strings to be copied
+ * @ptr: Pointer to allocated space to hold arrays
+ *
+ * Return: 0 if successful, else last index of space falied
+ */
+int array_of_strings(char *str, char **ptr)
+{
+	int i = 0, len = 0, j = 0, k;
+
+	while (*(str + i))
+	{
+		if (*(str + i) != ' ')
+			len++;
+		if (*(str + (i - 1)) != ' ' && (*(str + i) == ' ' ||
+			*(str + (i + 1)) == '\0') && i != 0)
+		{
+			ptr[j] = (char *)malloc((len + 1) * sizeof(char));
+			if (ptr[j] == NULL)
+				return (j);
+			if (*(str + (i + 1)) == '\0')
+				i++;
+			for (k = 0; len > 0; k++, len--)
+				ptr[j][k] = *(str + (i - len));
+			ptr[j][k] = '\0';
+			j++;
+		}
+		if (*(str + i) == '\0')
+			break;
+		i++;
+	}
+	ptr[j] = NULL;
+	return (0);
 }
