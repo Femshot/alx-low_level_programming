@@ -9,8 +9,8 @@
 char **strtow(char *str)
 {
 	char **ptr;
-	int i = 0, j = 0, k, l = 0;
-	int wrd_cnt = 0, len = 0, fail = 0;
+	int i = 0, j = 0, k;
+	int wrd_cnt, len = 0, fail = 0;
 
 	if (str == NULL || *(str + 0) == '\0')
 		return (NULL);
