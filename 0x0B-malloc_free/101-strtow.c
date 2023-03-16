@@ -15,7 +15,7 @@ char **strtow(char *str)
 		return (NULL);
 
 	wrd_cnt = count_num_words(str);
-	ptr = (char **)malloc((wrd_cnt + 1) * sizeof(char *));
+	ptr = malloc((wrd_cnt + 1) * sizeof(**ptr));
 	if (ptr == NULL)
 		return (NULL);
 
@@ -23,7 +23,7 @@ char **strtow(char *str)
 	if (fail != 0)
 	{
 		for (; fail == 0; fail--)
-			free((int *)ptr[fail]);
+			free(ptr[fail]);
 		free(ptr);
 	}
 	return (ptr);
@@ -63,7 +63,7 @@ int array_of_strings(char *str, char **ptr)
 		if (*(str + (i - 1)) != ' ' && (*(str + i) == ' ' ||
 			*(str + (i + 1)) == '\0') && i != 0)
 		{
-			ptr[j] = (char *)malloc((len + 1) * sizeof(char));
+			ptr[j] = malloc((len + 1) * sizeof(ptr[j]));
 			if (ptr[j] == NULL)
 				return (j);
 			if (*(str + (i + 1)) == '\0')
