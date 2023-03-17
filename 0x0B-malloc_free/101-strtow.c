@@ -11,7 +11,7 @@ char **strtow(char *str)
 	char **ptr;
 	int wrd_cnt, fail;
 
-	if (str == NULL || *(str + 0) == '\0')
+	if (str == NULL || *(str + 0) == '\0' || count_num_words(str) == 0)
 		return (NULL);
 
 	wrd_cnt = count_num_words(str);
