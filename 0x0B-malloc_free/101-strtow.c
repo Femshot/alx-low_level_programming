@@ -9,7 +9,7 @@
 char **strtow(char *str)
 {
 	char **ptr;
-	int wrd_cnt, fail;
+	int wrd_cnt;
 
 	if (str == NULL || *(str + 0) == '\0' || count_num_words(str) == 0)
 		return (NULL);
@@ -19,11 +19,11 @@ char **strtow(char *str)
 	if (ptr == NULL)
 		return (NULL);
 
-	fail = array_of_strings(str, ptr);
-	if (fail != 0)
+	wrd_cnt = array_of_strings(str, ptr);
+	if (wrd_cnt != 0)
 	{
-		for (; fail == 0; fail--)
-			free(ptr[fail]);
+		for (; wrd_cnt == 0; wrd_cnt--)
+			free(ptr[wrd_cnt]);
 		free(ptr);
 		return (NULL);
 	}
@@ -64,7 +64,7 @@ int array_of_strings(char *str, char **ptr)
 		if (*(str + (i - 1)) != ' ' && (*(str + i) == ' ' ||
 			*(str + (i + 1)) == '\0') && i != 0)
 		{
-			ptr[j] = malloc((len + 1) * sizeof(ptr[j]));
+			ptr[j] = (char *)malloc((len + 1) * sizeof(char));
 			if (ptr[j] == NULL)
 				return (j);
 			if (*(str + (i + 1)) == '\0' && *(str + i) != ' ')
