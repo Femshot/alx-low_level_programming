@@ -17,7 +17,7 @@ char **strtow(char *str)
 		return (NULL);
 
 	for (i = 0; str[i] != '\0'; i++)
-		if (str[i] != ' ' && (str[i + 1] == ' ' || i == 0))
+		if (str[i] != ' ' && (str[i - 1] == ' ' || i == 0))
 			count++;
 	if (count == 0)
 		return (NULL);
@@ -34,6 +34,7 @@ char **strtow(char *str)
 	}
 	return (ptr);
 }
+
 /**
  * make_array - Creates an array of words
  * @s: Pointer to a string
@@ -57,24 +58,14 @@ int make_array(char *s, char **p)
 				return (j);
 			count = letter;
 			if (s[i + 1] == '\0' && s[i] != ' ')
-			{
-				for (k = 0; k < count; k++)
-				{
-					p[j][k] = s[i - (letter - 1)];
-					letter--;
-				}
-			}
-			else
-			{
-				for (k = 0; k < count; k++)
-				{
-					p[j][k] = s[i - letter];
-					letter--;
-				}
-			}
+				i++;
+			for (k = 0; k < count; k++, letter--)
+				p[j][k] = s[i - letter];
 			p[j][k] = '\0';
 			j++;
 		}
+		if (s[i] == '\0')
+			break;
 	}
 	p[j] = NULL;
 	return (0);
