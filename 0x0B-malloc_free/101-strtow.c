@@ -53,7 +53,7 @@ int make_array(char *s, char **p)
 			letter++;
 		if (s[i - 1] != ' ' && i != 0 && (s[i] == ' ' || s[i + 1] == '\0'))
 		{
-			p[j] = (char *)malloc(sizeof(char *) * (letter + 1));
+			p[j] = (char *)malloc(sizeof(char) * (letter + 1));
 			if (p[j] == NULL)
 				return (j);
 			count = letter;
