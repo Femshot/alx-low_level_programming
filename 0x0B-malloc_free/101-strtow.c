@@ -1,83 +1,72 @@
-#include "main.h"
+#include <stdio.h>
+#include <stdlib.h>
+int make_array(char *s, char **p);
 
 /**
  * strtow - Splits a string into words
  * @str: Pointer to string
  *
- * Return: Pointer to array of words, NULL if fail
+ * Return: Pointer to array of words from string
  */
 char **strtow(char *str)
 {
 	char **ptr;
-	int wrd_cnt;
+	int i, count = 0;
 
-	if (str == NULL || *(str + 0) == '\0' || count_num_words(str) == 0)
+	if (str == NULL || str[0] == '\0')
 		return (NULL);
 
-	wrd_cnt = count_num_words(str);
-	ptr = (char **)malloc((wrd_cnt + 1) * sizeof(char *));
+	for (i = 0; str[i] != '\0'; i++)
+		if (str[i] != ' ' && (str[i - 1] == ' ' || i == 0))
+			count++;
+	if (count == 0)
+		return (NULL);
+	ptr = (char **)malloc(sizeof(char *) * (count + 1));
 	if (ptr == NULL)
 		return (NULL);
-
-	wrd_cnt = array_of_strings(str, ptr);
-	if (wrd_cnt != 0)
+	count = make_array(str, ptr);
+	if (count > 0)
 	{
-		for (; wrd_cnt == 0; wrd_cnt--)
-			free(ptr[wrd_cnt]);
+		for (; count >= 0; count--)
+			free(ptr[count]);
 		free(ptr);
 		return (NULL);
 	}
 	return (ptr);
 }
-/**
- * count_num_words - Counts the number of words found in a string
- * @s: Pointer to string
- * Return:number of words found
- */
-int count_num_words(char *s)
-{
-	int i = 0, l = 0;
 
-	while (*(s + l))
-	{
-		if ((*(s + l - 1) == ' ' || i == 0) && *(s + l) != ' ')
-			i++;
-		l++;
-	}
-	return (i);
-}
 /**
- * array_of_strings - Creates copy of an array of strings in an allocated space
- * @str: Pointer to strings to be copied
- * @ptr: Pointer to allocated space to hold arrays
+ * make_array - Creates an array of words
+ * @s: Pointer to a string
+ * @p: Pointer to Pointer to a memory location that holds strings
  *
- * Return: 0 if successful, else last index of space falied
+ * Return: 0 if success, else point of fail
  */
-int array_of_strings(char *str, char **ptr)
+int make_array(char *s, char **p)
 {
-	int i = 0, len = 0, j = 0, k;
+	int i, k, letter = 0, j = 0, count;
 
-	while (*(str + i))
+	for (i = 0; s[i] != '\0'; i++)
 	{
-		if (*(str + i) != ' ')
-			len++;
-		if (*(str + (i - 1)) != ' ' && (*(str + i) == ' ' ||
-			*(str + (i + 1)) == '\0') && i != 0)
+
+		if (s[i] != ' ')
+			letter++;
+		if (s[i - 1] != ' ' && i != 0 && (s[i] == ' ' || s[i + 1] == '\0'))
 		{
-			ptr[j] = (char *)malloc((len + 1) * sizeof(char));
-			if (ptr[j] == NULL)
+			p[j] = (char *)malloc(sizeof(char *) * (letter + 1));
+			if (p[j] == NULL)
 				return (j);
-			if (*(str + (i + 1)) == '\0' && *(str + i) != ' ')
+			count = letter;
+			if (s[i + 1] == '\0' && s[i] != ' ')
 				i++;
-			for (k = 0; len > 0; k++, len--)
-				ptr[j][k] = *(str + (i - len));
-			ptr[j][k] = '\0';
+			for (k = 0; k < count; k++, letter--)
+				p[j][k] = s[i - letter];
+			p[j][k] = '\0';
 			j++;
 		}
-		if (*(str + i) == '\0')
+		if (s[i] == '\0')
 			break;
-		i++;
 	}
-	ptr[j] = NULL;
+	p[j] = NULL;
 	return (0);
 }
