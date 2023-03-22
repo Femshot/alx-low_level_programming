@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-int main(int argc, char *argv[]);
+/*int main(int argc, char *argv[]);*/
 int (*get_op_func(char *s))(int, int);
 
 /**
