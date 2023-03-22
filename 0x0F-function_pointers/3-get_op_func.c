@@ -3,10 +3,8 @@
 /**
  * get_op_func - Gets the fucntion to execute based on operator passed
  * @s: Operator passed into  function
- * @a: First integer
- * @b: Second integer
  *
- * Return:
+ * Return: Pointer to operator function, else NULL
  */
 int (*get_op_func(char *s))(int, int)
 {
@@ -26,6 +24,5 @@ int (*get_op_func(char *s))(int, int)
 			return (ops[i].f);
 		i++;
 	}
-	printf("Error\n");
-	exit(98);
+	return (NULL);
 }

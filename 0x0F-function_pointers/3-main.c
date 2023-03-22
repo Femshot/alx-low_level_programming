@@ -10,8 +10,8 @@
  */
 int main(int argc, char *argv[])
 {
-	int res, num1, num2;
-	/*int (*f)(int a, int b);*/
+	int num1, num2;
+	int (*f)(int a, int b);
 
 	if (argc != 4)
 	{
@@ -20,13 +20,13 @@ int main(int argc, char *argv[])
 	}
 	num1 = atoi(argv[1]);
 	num2 = atoi(argv[3]);
-	if (argv[2][0] != '+' || argv[2][0] != '-' || argv[2][0] != '*' ||
-	argv[2][0] != '/' || argv[2][0] != '%' )
+
+	f = get_op_func(argv[2]);
+	if (f == NULL)
 	{
 		printf("Error\n");
 		exit(99);
 	}
-	res = get_op_func(argv[2])(num1, num2);
-	printf("%d\n", res);
+	printf("%d\n", f(num1, num2));
 	return (0);
 }
