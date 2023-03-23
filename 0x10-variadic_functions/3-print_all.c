@@ -1,6 +1,42 @@
 #include "variadic_functions.h"
 
 /**
+ * print_char - Prints a character
+ * @args: Input argument
+ */
+void print_char(va_list args)
+{
+	putchar(va_arg(args, int));
+}
+
+/**
+ * print_int -  Prints an Integer
+ * @args: Input argument
+ */
+void print_int(va_list args)
+{
+	printf("%d", va_arg(args, int));
+}
+
+/**
+ * print_float -  Prints a float number
+ * @args: Input argument
+ */
+void print_float(va_list args)
+{
+	printf("%f", va_arg(args, double));
+}
+
+/**
+ * print_string -  Prints a string
+ * @args: Input argument
+ */
+void print_string(va_list args)
+{
+	printf("%s", va_arg(args, char *));
+}
+
+/**
  * print_all - Print Anything based on passed arguments
  * Description: c = char, i = int, f = float, s = char *
  * (if null print (nil))
@@ -8,37 +44,32 @@
  */
 void print_all(const char * const format, ...)
 {
-	va_list list;
-	int n = 0;
-	char *str;
+	va_list args;
+	int i = 0, j;
+	fmt list[] = {
+				{'c', print_char},
+				{'i', print_int},
+				{'f', print_float},
+				{'s', print_string},
+				};
 
-	va_start(list, format);
-
-	while (format != NULL && format[n])
+	va_start(args, format);
+	while (format != NULL && format[i])
 	{
-		switch (format[n])
+		j = 0;
+		while (j < 4)
 		{
-		case 'c':
-			printf("%c", va_arg(list, int));
-			break;
-		case 'i':
-			printf("%d", va_arg(list, int));
-			break;
-		case 'f':
-			printf("%f", va_arg(list, double));
-			break;
-		case 's':
-			str = va_arg(list, char *);
-			if (str == NULL)
-				str = "(nil)";
-			printf("%s", str);
-			break;
+			if (list[j].c == format[i])
+			{
+				list[j].f(args);
+				if (format[i + 1] != '\0')
+					printf(", ");
+				break;
+			}
+			j++;
 		}
-		if ((format[n] == 'c' || format[n] == 'i' || format[n] == 'f' ||
-				format[n] == 's') && format[(n + 1)] != '\0')
-			printf(", ");
-		n++;
+		i++;
 	}
-	printf("\n");
-	va_end(list);
+	putchar('\n');
+	va_end(args);
 }
