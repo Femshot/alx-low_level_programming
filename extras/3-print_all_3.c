@@ -19,36 +19,37 @@ typedef struct frmt
  * print_char - Prints a character
  * @args: Input argument
  */
-void print_char(va_list args)
+void print_char(va_list arg)
 {
-	putchar(va_arg(args, int));
+	putchar(va_arg(arg, int));
 }
 
 /**
  * print_int -  Prints an Integer
  * @args: Input argument
  */
-void print_int(va_list args)
+void print_int(va_list a)
 {
-	printf("%d", va_arg(args, int));
+	printf("%d", va_arg(a, int));
 }
 
 /**
  * print_float -  Prints a float number
  * @args: Input argument
  */
-void print_float(va_list args)
+void print_float(va_list g)
 {
-	printf("%f", va_arg(args, double));
+	printf("%f", va_arg(g, double));
 }
 
 /**
  * print_string -  Prints a string
  * @args: Input argument
  */
-void print_string(va_list args)
+void print_string(va_list ar)
 {
-	printf("%s", va_arg(args, char *));
+	printf("%s", va_arg(ar, char *));
+	printf(" YAY!!!!");
 }
 
 /**
@@ -61,18 +62,14 @@ void print_all(const char * const format, ...)
 {
 	va_list args;
 	int i = 0, j;
-	fmt list[] = {
-				{'c', print_char},
-				{'i', print_int},
-				{'f', print_float},
-				{'s', print_string},
-				};
+	fmt list[] = {{'c', print_char}, {'i', print_int}, {'f', print_float},
+	{'s', print_string}, {'d', print_int}};
 
 	va_start(args, format);
 	while (format != NULL && format[i])
 	{
 		j = 0;
-		while (j < 4)
+		while (j < 5)
 		{
 			if (list[j].c == format[i])
 			{
@@ -91,6 +88,6 @@ void print_all(const char * const format, ...)
 
 int main(void)
 {
-    print_all("ceis", 'B', 3, "stSchool");
+    print_all("ceisd", 'B', 3, "stSchool", 10);
     return (0);
 }
