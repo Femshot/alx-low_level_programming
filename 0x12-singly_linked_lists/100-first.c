@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /* Using constructors in C */
-void main_constructor(void) __attribute__((constructor));
+void main_constructor(void)__attribute__((constructor));
 /**
  * main_constructor - A constructor function that prints a message
  * before main function
