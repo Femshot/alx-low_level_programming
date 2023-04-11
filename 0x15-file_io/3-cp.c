@@ -9,7 +9,7 @@
  */
 int main(int arc, char *arg[])
 {
-	if (arc != 3 || arg == NULL)
+	if (arc != 3)
 	{
 		write(STDERR_FILENO, "Usage: cp file_from file_to\n", 28);
 		exit(97);
@@ -25,18 +25,16 @@ int main(int arc, char *arg[])
  */
 void copy_files(char *s, char *t)
 {
-	int fs, ft, rd, wr, len = 0;
+	int fs, ft, rd, wr;
 	char buff[1024];
 
-	while (s && s[len])
-		len++;
 	fs = open(s, O_RDONLY);
 	if (fs < 0)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", s);
 		exit(98);
 	}
-	ft = open(t, O_RDWR | O_TRUNC | O_CREAT, 00664);
+	ft = open(t, O_WRONLY | O_TRUNC | O_CREAT, 00664);
 	if (ft < 0)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", t);
