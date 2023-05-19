@@ -6,10 +6,11 @@
  */
 void free_listint2(listint_t **head)
 {
-	listint_t *h, *t = *head;
+	listint_t *h, *t;
 
 	if (head == NULL)
 		return;
+	t = *head;
 	while (t)
 	{
 		h = t;
@@ -17,4 +18,11 @@ void free_listint2(listint_t **head)
 		free(h);
 	}
 	*head = NULL;
+}
+
+int main(void)
+{
+	free_listint2(NULL);
+	printf("Freed !\n");
+	return (0);
 }
