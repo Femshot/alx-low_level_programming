@@ -3,8 +3,8 @@
 /**
  * _strspn - Calculates the length of prefix substring
  * Description: Calculates the length (in bytes) of the initial segment of
- * string in "s" which consists entirely of bytes in accept.
- * @s: Pointer to string that"ll be checked
+ * string in s which consists entirely of bytes in accept.
+ * @s: Pointer to string that'll be checked
  * @accept: Pointer to string used as refrence
  *
  * Return: The length (in bytes) of the initial segment of s which consists

@@ -5,7 +5,7 @@
  * _strpbrk - Searches for any bytes of substring
  * Description: Locates the first coccurence of any byte of the of string in
  * accept which is found in s.
- * @s: Pointer to string that"ll be checked
+ * @s: Pointer to string that'll be checked
  * @accept: Pointer to string used as refrence
  *
  * Return: The first location in s that matches a byte in accept

@@ -19,10 +19,3 @@ void free_listint2(listint_t **head)
 	}
 	*head = NULL;
 }
-
-int main(void)
-{
-	free_listint2(NULL);
-	printf("Freed !\n");
-	return (0);
-}
